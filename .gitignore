@@ -1,0 +1,5 @@
+
+# Auto-ignored files
+.env
+*.log
+__pycache__/
