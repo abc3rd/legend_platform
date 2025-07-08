@@ -4,6 +4,11 @@ from pydantic import BaseModel
 import psycopg2
 import os
 
+from routes.query import router as query_router
+from routes.upload import router as upload_router
+from routes.generate_image import router as image_router
+from routes.websearch import router as websearch_router
+
 app = FastAPI()
 
 # Allow frontend access
@@ -42,3 +47,9 @@ def search_leads(request: QueryRequest):
         for r in rows
     ]
     return result
+
+# Register additional routers
+app.include_router(query_router)
+app.include_router(upload_router)
+app.include_router(image_router)
+app.include_router(websearch_router)
